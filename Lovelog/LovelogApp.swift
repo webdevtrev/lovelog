@@ -8,10 +8,19 @@
 import SwiftUI
 
 @main
-struct LovelogApp: App {
+struct LoveLogApp: App {
+    // Store the selection across launches
+    @AppStorage("selectedTheme") private var selectedThemeRaw = AppearanceOption.followSystem.rawValue
+
+    private var selectedTheme: AppearanceOption {
+        AppearanceOption(rawValue: selectedThemeRaw) ?? .followSystem
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                // Apply globally. `preferredColorScheme` accepts `ColorScheme?`
+                .preferredColorScheme(selectedTheme.colorScheme)
         }
     }
 }
