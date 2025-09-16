@@ -36,6 +36,13 @@ struct IdeasView: View {
                                     Label("Delete", systemImage: "trash")
                                 }
                             }
+                            .swipeActions(edge: .leading) {
+                                Button{
+                                    model.complete(idea)
+                                } label: {
+                                    Label("Complete", systemImage: "checkmark")
+                                }.tint(.green)
+                            }
                     }
                 }
             }

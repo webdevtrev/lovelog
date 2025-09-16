@@ -11,7 +11,7 @@ import SwiftUI
 struct LoveLogApp: App {
     // Store the selection across launches
     @AppStorage("selectedTheme") private var selectedThemeRaw = AppearanceOption.followSystem.rawValue
-
+    @StateObject private var session = AppSession()
     private var selectedTheme: AppearanceOption {
         AppearanceOption(rawValue: selectedThemeRaw) ?? .followSystem
     }
@@ -21,6 +21,7 @@ struct LoveLogApp: App {
             ContentView()
                 // Apply globally. `preferredColorScheme` accepts `ColorScheme?`
                 .preferredColorScheme(selectedTheme.colorScheme)
+                .environmentObject(session)
         }
     }
 }

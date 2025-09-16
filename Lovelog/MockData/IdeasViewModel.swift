@@ -65,7 +65,7 @@ final class IdeasViewModel {
     }
     func complete(_ idea: DateIdea) {
         if let index = ideas.firstIndex(where: { $0.id == idea.id }) {
-            ideas[index].title = "New Title"
+            ideas[index].completed = true
         }
     }
     // MARK: Derived Collections
@@ -85,5 +85,8 @@ final class IdeasViewModel {
     
     var currentIdeas: [DateIdea] {
         ideas.sorted { $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending }
+    }
+    var completedIdeas: [DateIdea]{
+        ideas.filter { $0.completed }
     }
 }

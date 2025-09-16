@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            Text("This is Home")
+            Text("This is Home!")
                 .tabItem {
                     Label("Explore", systemImage: "sparkles")
                 }
@@ -26,7 +26,7 @@ struct ContentView: View {
                 }
             SettingsView()
                 .tabItem {
-                    Label("Settings", systemImage: "gear")
+                    Label("More", systemImage: "gear")
                 }
         }
     }
