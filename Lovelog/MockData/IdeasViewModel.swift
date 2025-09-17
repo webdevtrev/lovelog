@@ -84,7 +84,7 @@ final class IdeasViewModel {
     }
     
     var currentIdeas: [DateIdea] {
-        ideas.sorted { $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending }
+        ideas.sorted { $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending }.filter { !$0.completed }
     }
     var completedIdeas: [DateIdea]{
         ideas.filter { $0.completed }

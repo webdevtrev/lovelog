@@ -7,17 +7,28 @@
 import SwiftUI
 
 struct AuthGateView: View {
-    let onSignIn: () -> Void
-    var body: some View {
-        VStack(spacing: 16) {
-            Text("Welcome to Love Log")
-                .font(.largeTitle.bold())
-            Text("Please sign in or pair with your partner to continue.")
-            Button("Sign In") { onSignIn() }
-                .buttonStyle(.borderedProminent)
+  @EnvironmentObject private var authStore: SupabaseAuthStore
+  let onSignIn: () -> Void
+
+  var body: some View {
+    VStack(spacing: 16) {
+      Text("Welcome to Love Log")
+        .font(.largeTitle.bold())
+      Text("Please sign in or pair with your partner to continue.")
+      Button("Sign in with Apple") {
+        Task {
+          do {
+            try await authStore.signInWithApple()
+            onSignIn()        // update AppSession.auth to .signedIn
+          } catch {
+            // handle error (show alert, etc.)
+          }
         }
-        .padding()
+      }
+      .buttonStyle(.borderedProminent)
     }
+    .padding()
+  }
 }
 
 #Preview{

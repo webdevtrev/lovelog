@@ -19,6 +19,23 @@ struct IdeasView: View {
                     Section("Upcoming Dates") {
                         ForEach(model.upcomingIdeas) { idea in
                             UpcomingIdeaRow(idea: idea, user: model.userByID[idea.createdByUserID])
+                                .onTapGesture {
+                                    path.append(idea)
+                                }
+                                .swipeActions(edge: .trailing) {
+                                    Button(role: .destructive) {
+                                        model.delete(idea)
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
+                                }
+                                .swipeActions(edge: .leading) {
+                                    Button{
+                                        model.complete(idea)
+                                    } label: {
+                                        Label("Complete", systemImage: "checkmark")
+                                    }.tint(.green)
+                                }
                         }
                     }
                 }

@@ -10,7 +10,7 @@
 import SwiftUI
 
 struct RootView: View {
-    @EnvironmentObject private var session: AppSession
+    @EnvironmentObject private var session: SupabaseAuthStore
 
     var body: some View {
         
