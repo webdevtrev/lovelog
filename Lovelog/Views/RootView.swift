@@ -20,7 +20,7 @@ struct RootView: View {
             case .onboardingNeeded:
                 OnboardingView()
             case .signedOut:
-                AuthGateView(onSignIn: session.signIn) // your login/pair screen
+                AuthGateView(onSignIn: test) // your login/pair screen
             case .signedIn:
                 ContentView()
             }

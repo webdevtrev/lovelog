@@ -17,12 +17,8 @@ struct AuthGateView: View {
       Text("Please sign in or pair with your partner to continue.")
       Button("Sign in with Apple") {
         Task {
-          do {
-            try await authStore.signInWithApple()
-            onSignIn()        // update AppSession.auth to .signedIn
-          } catch {
-            // handle error (show alert, etc.)
-          }
+            authStore.signInWithAppleNative()
+            onSignIn()
         }
       }
       .buttonStyle(.borderedProminent)

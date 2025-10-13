@@ -23,9 +23,6 @@ struct LoveLogApp: App {
                 // Apply globally. `preferredColorScheme` accepts `ColorScheme?`
                 .preferredColorScheme(selectedTheme.colorScheme)
                 .environmentObject(authStore)
-                .onOpenURL { url in
-                  authStore.handle(url)          // completes the OAuth flow
-                }
         }
     }
 }

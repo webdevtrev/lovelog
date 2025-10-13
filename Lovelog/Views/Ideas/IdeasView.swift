@@ -74,12 +74,24 @@ struct IdeasView: View {
                     }
                     .accessibilityLabel("Create new idea")
                 }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        path.append(PartnerAddRoute())
+                    } label: {
+                        Image(systemName: "person.fill.badge.plus")
+                            .imageScale(.large)
+                    }
+                    .accessibilityLabel("Add Partner")
+                }
             }
             .navigationDestination(for: DateIdea.self) { idea in
                 IdeaDetailView(idea: idea, user: model.userByID[idea.createdByUserID])
             }
             .navigationDestination(for: CreateIdeaRoute.self) { _ in
                 CreateIdeaView()
+            }
+            .navigationDestination(for: PartnerAddRoute.self){ _ in
+                PartnerAdd()
             }
         }
     }
@@ -89,6 +101,7 @@ struct IdeasView: View {
 // MARK: - Destinations
 
 struct CreateIdeaRoute: Hashable {}
+struct PartnerAddRoute: Hashable {}
 
 
 

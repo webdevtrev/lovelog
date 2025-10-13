@@ -8,8 +8,12 @@ import SwiftUI
 
 struct SplashCheckingView: View {
     var body: some View {
-        ProgressView("Checking session…")
+        ProgressView("Welcome to Lovelog")
             .progressViewStyle(.circular)
             .padding()
     }
+}
+
+#Preview{
+    SplashCheckingView()
 }
